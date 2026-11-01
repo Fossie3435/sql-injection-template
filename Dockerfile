@@ -11,7 +11,8 @@ WORKDIR /sql-injection-demo
 
 COPY . /sql-injection-demo
 
+RUN chmod +x /sql-injection-demo/setup.sh
+
 EXPOSE 8000
 
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "/sql-injection-demo"]
-
+CMD ["/bin/bash", "-c", "/sql-injection-demo/setup.sh && exec php -S 0.0.0.0:8000 -t /sql-injection-demo"]
